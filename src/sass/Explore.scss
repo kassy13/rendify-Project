@@ -1,0 +1,255 @@
+@import "_variables";
+@import "base";
+@import "_mixins";
+@import "_mediaQuery";
+
+// Explore component
+.explore_section {
+  width: 100%;
+  padding-inline: 3rem;
+  padding-block: 7rem;
+
+  @include mediaQuery(767px) {
+    padding-block: 6rem;
+    padding-inline: 1.5rem;
+  }
+  h1 {
+    font-size: $captionSize;
+    @include mediaQuery(767px) {
+      font-size: 1.5rem;
+      padding-top: 1rem;
+    }
+  }
+  .categories {
+    display: flex;
+    gap: 2rem;
+    padding-block: 2rem;
+    @include mediaQuery(767px) {
+      //   display: grid;
+      //   grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      overflow-x: auto;
+      h4 {
+        white-space: nowrap; // Prevent text from wrapping to the next line
+        margin-right: 1rem; // Adjust margin between items
+      }
+    }
+  }
+  .each_event {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    @include mediaQuery(767px) {
+      grid-template-columns: repeat(1, 1fr) !important;
+      gap: 2rem;
+    }
+    @include mediaQuery(1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .explore {
+      background-color: $tertiaryColor;
+      width: 100%;
+      height: 57vh;
+      padding-bottom: 1rem;
+      color: $white;
+      border-radius: 10px;
+      @include mediaQuery(1024px) {
+        height: 35vh;
+      }
+      .event {
+        height: 60%;
+        position: relative;
+        .event_text {
+          padding: 0.5rem;
+        }
+        .date {
+          position: absolute;
+          background-color: $primaryColor;
+          top: 0;
+          right: 0;
+          color: $white;
+          padding: 0.2rem;
+          opacity: 0.86;
+        }
+        .cate {
+          position: absolute;
+          bottom: 0;
+          background-color: $white;
+          color: $black;
+          padding: 0.2rem;
+        }
+
+        .event_img {
+          width: 100%;
+          height: 100%;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+
+      h1 {
+        font-size: 1.2rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+
+    button {
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+
+    span {
+      margin: 0 0.5rem;
+    }
+  }
+}
+
+// Event Details Component
+.event_details {
+  width: 100%;
+  display: flex;
+  gap: 3rem;
+  padding-block: 7rem;
+  padding-inline: 5rem;
+  @include mediaQuery(767px) {
+    flex-direction: column-reverse;
+  }
+  .left {
+    width: 50%;
+    @include mediaQuery(767px) {
+      width: 100%;
+    }
+    h1 {
+      font-size: $largerFontSize;
+      color: $tertiaryColor;
+    }
+    .event_img {
+      //   width: 30%;
+
+      padding-block: $smallFontSize;
+      img {
+        border-radius: 10px;
+      }
+    }
+  }
+  .right {
+    width: 50%;
+    border: 0.1px solid rgba(128, 128, 128, 0.31);
+    border-radius: 10px;
+    padding: $largeFontSize;
+    line-height: 3;
+    margin-block: 3rem;
+    @include mediaQuery(767px) {
+      width: 100%;
+    }
+    h1 {
+      font-size: $largerFontSize;
+      color: $tertiaryColor;
+      font-weight: 700;
+    }
+    .tex {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      font-size: $smallFontSize;
+      .icon {
+        width: $mediumFontSize;
+        height: $mediumFontSize;
+      }
+    }
+
+    .tweet {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: $smallFontSize;
+      line-height: 1.3;
+      padding-top: 1rem;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.02);
+      }
+      span {
+        font-weight: 100;
+        font-size: $smallerFontSize;
+      }
+      .twit_logo {
+        color: $tertiaryColor;
+      }
+    }
+    .btn {
+      @include Button($white, $tertiaryColor, $primaryColor);
+      width: 30px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+// Payment
+.checkout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  // background-color: aqua;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: 3rem;
+  padding-inline: 3rem;
+  @include mediaQuery(767px) {
+    padding-inline: 1rem;
+  }
+  .checkout_card {
+    padding-block: 1rem;
+    padding-inline: 3rem;
+    line-height: 3;
+    border: 0.1px solid rgba(128, 128, 128, 0.266);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(128, 128, 128, 0.667);
+    width: 60%;
+    height: 90vh;
+    text-align: center;
+    @include mediaQuery(767px) {
+      padding-inline: 1.5rem !important;
+      width: 90%;
+    }
+    .event_img {
+      width: 40%;
+      height: 30%;
+      object-fit: cover;
+      margin: auto;
+    }
+    h2 {
+      font-size: $mediumFontSize;
+      text-align: center;
+      color: $tertiaryColor;
+      font-weight: 700;
+    }
+    .btn {
+      margin: auto;
+      margin-top: 1rem;
+      @include Button($white, $tertiaryColor, $primaryColor);
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

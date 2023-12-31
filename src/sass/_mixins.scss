@@ -1,0 +1,70 @@
+//button
+@mixin Button($txtColor, $bgColor, $bgHoverColor) {
+  background-color: $bgColor;
+  color: $txtColor;
+  padding: 10px 40px;
+  border-radius: 7px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  clip-path: polygon(
+    15% 0%,
+    85% 0%,
+    100% 15%,
+    100% 85%,
+    85% 100%,
+    15% 100%,
+    0% 85%,
+    0% 15%
+  );
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: $bgHoverColor;
+    z-index: -1;
+    transition: 500ms all cubic-bezier(1, 0, 0, 1);
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
+}
+
+//gradient
+@mixin TextGradient($color1, $color2, $color3) {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to right, $color1, $color2, $color3);
+  background-clip: text;
+  animation: text-animation 1s ease-out infinite alternate;
+  background-size: 200% auto;
+
+  @keyframes text-animation {
+    0% {
+      background-position: 0% 0%;
+      color: $color2;
+    }
+    25% {
+      background-position: 25% 25%;
+      color: $color3;
+    }
+    50% {
+      background-position: 50% 50%;
+      color: $color1;
+    }
+    75% {
+      background-position: 75% 75%;
+      color: $color3;
+    }
+    100% {
+      background-position: 100% 0%;
+      color: $color2;
+    }
+  }
+}

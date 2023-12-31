@@ -1,0 +1,21 @@
+// Loader2.scss
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8); // semi-transparent white background
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; // Ensure it's above other elements
+}
+
+.loader-container {
+  width: 70%; // Adjust the width as needed
+  height: 70%; // Adjust the height as needed
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,81 @@
+@import "_variables";
+@import "base";
+@import "_mixins";
+@import "_mediaQuery";
+.rsvp {
+  width: 100%;
+  height: auto !important;
+  // background-color: gold;
+  position: relative;
+  // display: grid;
+  // grid-template-columns: repeat(2, 1fr);
+
+  .sidenav {
+    // width: 10%;
+    // height: 100vh;
+    background-color: green !important;
+    position: fixed;
+    top: 0;
+  }
+  .other_sideNav {
+    width: 80%;
+    // position: fixed;
+    position: relative;
+    left: 20%;
+    // background-color: cadetblue;
+    height: 100vh !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+
+    gap: 3rem;
+    padding-inline: 3rem;
+    padding-block: 4rem;
+
+    .no_rsvp {
+      // background-color: blue;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      p {
+        font-weight: 500;
+        font-size: $largeFontSize;
+      }
+      img {
+        width: 40%;
+      }
+    }
+    .rsvps {
+      width: 100%;
+
+      position: relative;
+      // background-color: aqua;
+      // padding-inline: 3rem;
+      // padding-block: 3rem;
+      // display: grid;
+      // grid-template-columns: repeat(2, 1fr) !important;
+      // left: 20%;
+      .rsvp_content {
+        width: 100%;
+        height: 50%;
+        background-color: floralwhite;
+        // display: grid;
+        // grid-template-columns: repeat(2, 1fr);
+      }
+      .rsvp_img {
+        width: 100%;
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
