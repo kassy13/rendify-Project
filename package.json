@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "node main.js",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -28,6 +29,7 @@
     "sass": "^1.69.5",
     "stripe": "^14.9.0",
     "swiper": "^11.0.5",
+    "twilio": "^4.20.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
