@@ -3,14 +3,18 @@ import {
   databases,
   Database_Id,
   Collection_Id,
+  notiClient,
 } from "../../appwrite/appWriteConfig";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Copy, Pen, Share, Trash } from "@phosphor-icons/react";
 import SideNav from "../Dashboard/SideNav";
 import "../../sass/createaddEvent.scss";
+import "../../sass/Userslist.scss";
 import { toast } from "react-toastify";
 import rsvpimg from "../../assets/norsvp.gif";
 import Loader2 from "../../Loader/Loader2";
+import UserList from "../Dashboard/UsersList";
+// import UsersList from "./UsersList";
 
 const EditEvent = () => {
   const { eventId } = useParams();
@@ -18,6 +22,8 @@ const EditEvent = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [showUserList, setShowUserList] = useState(false); //For toggling the userslist component that contains the list of all the appwrite users in my project
+
   // console.log("Event ID:", eventId);
   useEffect(() => {
     const fetchEventDetails = async () => {
@@ -38,6 +44,13 @@ const EditEvent = () => {
     if (eventId) {
       fetchEventDetails();
     }
+
+    notiClient.subscribe(
+      `database.${Database_Id}.collections.${Collection_Id}.documents`,
+      (response) => {
+        console.log("response notific", response);
+      }
+    );
   }, [eventId]);
   // if (!loading) {
   //   return (
@@ -46,6 +59,10 @@ const EditEvent = () => {
   //     </div>
   //   );
   // }
+
+  const toggleUsersList = () => {
+    setShowUserList((prevState) => !prevState);
+  };
 
   const copyEventIdToClipboard = () => {
     if (eventDetails) {
@@ -78,6 +95,13 @@ const EditEvent = () => {
     navigate("/dashboard/updateevent", { state: { eventDetails } });
   };
 
+  const handleInviteEvent = async (e, id) => {
+    e.preventDefault();
+    console.log("handleinvit", id);
+    toggleUsersList();
+
+    // navigate("/invites", { state: { eventDetails } });
+  };
   return (
     <div className="edit-event">
       <div className="sidenav">
@@ -90,7 +114,13 @@ const EditEvent = () => {
           <div className="otherside_card">
             <div className="otherside_img">
               <img
-                src={`https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${eventDetails.eventImage}/view?project=656f89964f0ca3d8368e&mode=admin`}
+                src={
+                  typeof eventDetails.eventImage === "string"
+                    ? eventDetails.eventImage.startsWith("https://")
+                      ? eventDetails.eventImage
+                      : `https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${eventDetails.eventImage}/view?project=656f89964f0ca3d8368e&mode=admin`
+                    : `https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${eventDetails.eventImage.$id}/view?project=656f89964f0ca3d8368e&mode=admin`
+                }
                 alt=""
               />
             </div>
@@ -134,7 +164,10 @@ const EditEvent = () => {
                 Copy Id <Copy />
               </p>
             </button>
-            <button className="btn">
+            <button
+              className="btn"
+              onClick={(e) => handleInviteEvent(e, eventDetails.$id)}
+            >
               <p>
                 Invite <Share />
               </p>
@@ -160,6 +193,12 @@ const EditEvent = () => {
               </button>
             </div>
           </div>
+        </div>
+      )}
+
+      {showUserList && (
+        <div className="side-pop-up">
+          <UserList onClose={toggleUsersList} />
         </div>
       )}
     </div>

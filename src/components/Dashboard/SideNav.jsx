@@ -9,11 +9,18 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import logoimg from "../../assets/rendify_rbg.png";
 import { House, Notification } from "@phosphor-icons/react";
+import "../../sass/SideNav.scss";
 
 const SideNav = () => {
   const { logoutUser, user } = useAuth();
   const [selectedLink, setSelectedLink] = useState(false);
   const [userRsvps, setUserRsvps] = useState([]);
+
+  // Sample notifications state
+  const [notifications, setNotifications] = useState([
+    { title: "Notification 1", message: "This is a notification", read: false },
+    { title: "Notification 2", message: "Another notification", read: true },
+  ]);
 
   //   const handleLinkClose = () => {
   //     setSelectedLink("dashboard");
@@ -23,8 +30,16 @@ const SideNav = () => {
 
     console.log(link, "clicked");
   };
+  const handleNotificationClick = (notification) => {
+    // Mark the notification as read
+    notification.read = true;
+
+    // Handle displaying notification details (e.g., show a modal)
+    console.log("Notification Clicked:", notification);
+  };
+
   return (
-    <div className="dashboard">
+    <div className="side_nav">
       <nav className="nav">
         <div className="nav_links">
           {/* <Link to="/">Home</Link> */}
@@ -47,7 +62,7 @@ const SideNav = () => {
           >
             <Calendar /> Events
           </Link>
-          <Link to="invites" className="link">
+          <Link to="/invites" className="link">
             {" "}
             <ShareNetwork /> Invites
           </Link>
@@ -60,7 +75,11 @@ const SideNav = () => {
             <BookmarkSimple /> RSVPs
           </Link>
           <Link to="/notifications" className="link">
-            <Notification /> Notifications
+            <Notification
+              notifications={notifications}
+              onClick={handleNotificationClick}
+            />
+            Notifications
           </Link>
         </div>
         <div className="down_bar">

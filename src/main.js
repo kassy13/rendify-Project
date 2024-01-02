@@ -49,32 +49,32 @@
 // };
 
 // Grab the varibles
-const accountsid = import.meta.env.TWILIO_ACCOUNT_SID;
-const authToken = import.meta.env.TWILIO_AUTH_TOKEN;
-const senderPhone = import.meta.env.TWILIO_NUMBER;
+// const accountsid = import.meta.env.TWILIO_ACCOUNT_SID;
+// const authToken = import.meta.env.TWILIO_AUTH_TOKEN;
+// const senderPhone = import.meta.env.TWILIO_NUMBER;
 
-// Importing twilio
-const twilioClient = require("twilio")(accountsid, authToken);
+// // Importing twilio
+// const twilioClient = require("twilio")(accountsid, authToken);
 
-// Fetch input data
-const payload = JSON.parse(import.meta.APPWRITE_FUNCTION_DATA);
-const reciever = payload["receiver"];
-const message = payload["message"];
+// // Fetch input data
+// const payload = JSON.parse(import.meta.APPWRITE_FUNCTION_DATA);
+// const reciever = payload["receiver"];
+// const message = payload["message"];
 
-if (!reciever) console.log("Recievers phone number is required");
+// if (!reciever) console.log("Recievers phone number is required");
 
-if (!message) console.log("Message content is required");
+// if (!message) console.log("Message content is required");
 
-// send message to receiver
-twilioClient.messages
-  .create({
-    from: senderPhone,
-    to: reciever,
-    body: message,
-  })
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// // send message to receiver
+// twilioClient.messages
+//   .create({
+//     from: senderPhone,
+//     to: reciever,
+//     body: message,
+//   })
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });

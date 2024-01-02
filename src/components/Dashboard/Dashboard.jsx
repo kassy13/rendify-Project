@@ -18,19 +18,19 @@ import {
 } from "../../appwrite/appWriteConfig";
 import "../../sass/Dashboard.scss";
 import CreateEvent from "../Events/CreateEvent";
-import logoimg from "../../assets/rendify_rbg.png";
-import {
-  BookmarkSimple,
-  Calendar,
-  ShareNetwork,
-  User,
-} from "@phosphor-icons/react/dist/ssr";
-import { Notification } from "@phosphor-icons/react";
+// import logoimg from "../../assets/rendify_rbg.png";
+// import {
+//   BookmarkSimple,
+//   Calendar,
+//   ShareNetwork,
+//   User,
+// } from "@phosphor-icons/react/dist/ssr";
+// import { Notification } from "@phosphor-icons/react";
 import { BigHead } from "@bigheads/core";
-import AddedEvents from "../Events/AddedEvents";
-import Rsvp from "../Events/Rsvp";
-import Profile from "../Profile";
-import EditEvent from "../Events/EditEvent";
+// import AddedEvents from "../Events/AddedEvents";
+// import Rsvp from "../Events/Rsvp";
+// import Profile from "../Dashboard/Profile";
+// import EditEvent from "../Events/EditEvent";
 import SideNav from "./SideNav";
 
 const Dashboard = () => {
@@ -42,7 +42,7 @@ const Dashboard = () => {
   const [userRsvps, setUserRsvps] = useState([]);
   const location = useLocation(); // Use useLocation hook
   const [selectedLink, setSelectedLink] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState(null); //for conditionally rendering the cards inside the addevent component on the dashboard
+  // const [selectedEvent, setSelectedEvent] = useState(null); //for conditionally rendering the cards inside the addevent component on the dashboard
   const [selectedEventId, setSelectedEventId] = useState(null);
 
   useEffect(() => {
@@ -125,6 +125,7 @@ const Dashboard = () => {
     console.log("selected event ID", eventId);
     setSelectedLink("editevent"); // Set the link to 'editevent' to render EditEvent component
   };
+
   return (
     <div className="dashboard">
       <SideNav />

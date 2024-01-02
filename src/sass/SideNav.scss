@@ -1,0 +1,79 @@
+@import "_variables";
+@import "base";
+@import "_mixins";
+@import "_mediaQuery";
+.side_nav {
+  .nav {
+    width: 20%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-block: 0 4rem !important;
+    padding-inline: 1.5rem !important;
+    background-color: $primaryColor;
+    position: fixed;
+    border: 1px solid #110a294a;
+
+    .nav_links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      color: $white;
+      //   color: $tertiaryColor;
+      font-weight: 600;
+
+      .dash_img {
+        width: 150px;
+        margin-left: -2.5rem;
+        padding-top: 1.5rem;
+        z-index: 100;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          //   filter: invert(1);
+        }
+      }
+      .link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        padding: 0.4rem;
+        &:hover {
+          background-color: $tertiaryColor;
+          color: $white;
+          border: 1px solid #110a294a;
+          box-shadow: 1px 1px 4px #110a297f;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+  .down_bar {
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    .person {
+      &:hover {
+        color: $primaryColor;
+      }
+    }
+  }
+  .btn {
+    @include Button($white, $tertiaryColor, $primaryColor);
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .link.active {
+    // Your styles for the active link
+    color: red;
+    // Add other styles as needed
+  }
+}

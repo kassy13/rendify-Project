@@ -1,0 +1,90 @@
+@import "_variables";
+@import "base";
+@import "_mixins";
+@import "_mediaQuery";
+
+.side-pop-up {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%; /* Adjust the width as needed */
+  height: 100%;
+  background: #fff;
+  box-shadow: -1px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+.user-list {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background: #fff;
+  box-shadow: -1px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 9;
+  padding: 20px;
+  overflow-y: scroll;
+
+  //   background-color: #007bff;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+    h2 {
+      font-size: $largeFontSize;
+    }
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 0.1px solid $gray;
+    border-radius: 10px;
+  }
+
+  ul {
+    list-style-type: none;
+    // padding: 0;
+    // margin: 0;
+    // overflow-y: scroll;
+
+    height: 100%;
+
+    padding-block: 1rem 0;
+  }
+
+  .one_user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    padding-inline: 1rem;
+    padding-block: 1rem;
+    &:hover {
+      background-color: rgba(128, 128, 128, 0.185);
+      border-radius: 10px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .name {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .email {
+      font-size: 0.8rem;
+    }
+    .btn {
+      @include Button($white, $primaryColor, $tertiaryColor);
+      width: 100px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

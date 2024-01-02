@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { clientContentful } from "../Contentful/client";
 import "../sass/hero.scss";
 import heroimga from "../assets/Glass_Prism0094.png";
+import { Link } from "react-router-dom";
+// import heroimga from "../assets/Clay_Purple0077.png";
 
 const HeroSection = () => {
   const [hero, setHero] = useState([]);
@@ -54,6 +56,9 @@ const HeroSection = () => {
             <div className="text_wrap">
               <h1 className="hero_title">{heroTitle}</h1>
               <p> {heroPara} </p>
+              <Link to={"/explore"} className="btn">
+                Get Started
+              </Link>
             </div>
             <div className="hero_img">
               {/* <img src={heroimg} alt="" /> */}

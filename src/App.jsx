@@ -21,9 +21,11 @@ import Rsvp from "./components/Events/Rsvp";
 import AddedEvents from "./components/Events/AddedEvents";
 // import Conference from "./Categories/Conference";
 import Payment from "./components/Events/Payment";
-import Profile from "./components/Profile";
 import EditEvent from "./components/Events/EditEvent";
 import UpdateEvent from "./components/Events/UpdateEvent";
+import Notification from "./components/Dashboard/Notification";
+import Invites from "./components/Dashboard/Invites";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -132,6 +134,22 @@ function App() {
                 element={
                   <EventContextProvider>
                     <UpdateEvent />
+                  </EventContextProvider>
+                }
+              ></Route>
+              <Route
+                path="/notifications"
+                element={
+                  <EventContextProvider>
+                    <Notification />
+                  </EventContextProvider>
+                }
+              ></Route>
+              <Route
+                path="/invites"
+                element={
+                  <EventContextProvider>
+                    <Invites />
                   </EventContextProvider>
                 }
               ></Route>

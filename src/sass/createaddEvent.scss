@@ -410,6 +410,113 @@
     align-items: center;
     // justify-content: center;
     flex-direction: column;
+
+    .form {
+      //   border: 0.1px solid saddlebrown;
+      width: 80%;
+      padding-bottom: 4rem;
+      .inp {
+        padding-block: 1rem;
+
+        //
+      }
+      span {
+        color: red;
+      }
+
+      input {
+        width: 100%;
+        height: 7vh;
+        border-radius: 10px;
+        border: 0.01px solid #1c0d4f48;
+        padding-inline: 1rem;
+      }
+      .mode {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+
+        .privacy {
+          display: flex;
+          flex-direction: column;
+          select {
+            width: 100%;
+            height: 7vh;
+            border-radius: 10px;
+            border: 0.01px solid #1c0d4f48;
+            padding-inline: 1rem;
+          }
+        }
+        .medium {
+          display: flex;
+          flex-direction: column;
+          select {
+            width: 100%;
+            height: 7vh;
+            border-radius: 10px;
+            border: 0.01px solid #1c0d4f48;
+            padding-inline: 1rem;
+          }
+        }
+      }
+      .modee {
+        // display: flex;
+        // justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+        align-items: center;
+
+        .accept,
+        .ticket,
+        .category {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          select {
+            width: 100%;
+            height: 7vh;
+            border-radius: 10px;
+            border: 0.01px solid #1c0d4f48;
+            padding-inline: 1rem;
+          }
+        }
+      }
+      .file {
+        input {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-top: 0.5rem;
+        }
+      }
+      .textarea {
+        display: flex;
+        flex-direction: column;
+
+        textarea {
+          height: 7vh;
+          border-radius: 10px;
+          border: 0.01px solid #1c0d4f48;
+          padding-inline: 1rem;
+          padding-block: 0.5rem;
+        }
+      }
+      .date {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+        input {
+          width: 100%;
+        }
+      }
+      .btn {
+        margin: auto;
+        margin-top: 2rem;
+        text-wrap: nowrap;
+      }
+    }
   }
 }
 
