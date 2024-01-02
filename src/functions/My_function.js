@@ -1,5 +1,7 @@
+// process("dotenv").config({ path: ".env.development" });
+
 import express from "express";
-import { appwriteFunction } from "../appwrite/appWriteConfig";
+import { appwriteFunction } from "./appwriConfig.js";
 
 const expressApp = express(); // Use a different name for your Express app
 
@@ -34,7 +36,7 @@ expressApp.use((req, res) => {
   res.status(404).json({ message: "Not Found" });
 });
 
-const PORT = import.meta.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 expressApp.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
