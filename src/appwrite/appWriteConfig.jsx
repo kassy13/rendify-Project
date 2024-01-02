@@ -5,6 +5,7 @@ import {
   Avatars,
   Storage,
   Query,
+  Functions,
 
   // Role,
   // Permission,
@@ -17,6 +18,7 @@ export { ID } from "appwrite";
 export const databases = new Databases(client);
 export const storageBucket = new Storage(client);
 export const query = new Query(client);
+export const appwriteFunction = new Functions(client);
 
 client
   .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT)
