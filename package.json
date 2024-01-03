@@ -17,6 +17,7 @@
     "appwrite": "^13.0.1",
     "contentful": "^10.6.14",
     "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "hamburger-react": "^2.5.0",
     "leaflet": "^1.9.4",
     "node-appwrite": "^11.1.0",
