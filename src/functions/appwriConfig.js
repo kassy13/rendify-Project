@@ -9,12 +9,12 @@ import {
 } from "appwrite";
 
 const client = new Client();
-// export const account = new Account(client);
-// export const avatars = new Avatars(client);
-// export { ID } from "appwrite";
-// export const databases = new Databases(client);
-// export const storageBucket = new Storage(client);
-// export const query = new Query(client);
+export const account = new Account(client);
+export const avatars = new Avatars(client);
+export { ID } from "appwrite";
+export const databases = new Databases(client);
+export const storageBucket = new Storage(client);
+export const query = new Query(client);
 export const appwriteFunction = new Functions(client);
 
 // client
