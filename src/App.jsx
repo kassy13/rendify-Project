@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./custom css/Toastify-custom.css";
+import "./custom css/dash.css";
 import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
@@ -23,9 +24,10 @@ import AddedEvents from "./components/Events/AddedEvents";
 import Payment from "./components/Events/Payment";
 import EditEvent from "./components/Events/EditEvent";
 import UpdateEvent from "./components/Events/UpdateEvent";
-import Notification from "./components/Dashboard/Notification";
 import Invites from "./components/Dashboard/Invites";
 import Profile from "./components/Profile";
+import Notification from "./components/Dashboard/Notification";
+import CreateEvent from "./components/Events/CreateEvent";
 
 function App() {
   return (
@@ -69,7 +71,7 @@ function App() {
             {/* Private Routes */}
             <Route element={<PrivateRoutes />}>
               <Route path="/dashboard" element={<Dashboard />} />
-
+              <Route path="/createevent" element={<CreateEvent />} />
               <Route path="/verification" element={<Verification />} />
               <Route path="/profile" element={<Profile />} />
 

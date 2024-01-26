@@ -20,6 +20,8 @@ import { useAuth } from "../../utils/AuthContext";
 import { X } from "@phosphor-icons/react";
 import Loader2 from "../../Loader/Loader2";
 import { Client } from "appwrite";
+import SideNav from "../Dashboard/SideNav";
+import "../../sass/btn.scss";
 
 const CreateEvent = ({ onClose }) => {
   const navigate = useNavigate();
@@ -245,249 +247,263 @@ const CreateEvent = ({ onClose }) => {
   };
 
   return (
-    <div className="create_event_container">
+    <div className="create_event_container Dash">
       {loading ? (
         <Loader2 />
       ) : (
-        <div className="create_event">
-          <button onClick={handleCreateClose} className="close">
-            <X />
-          </button>
-          <h2>Create Event</h2>
-          <form
-            className="form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              addNewEvent(e);
-            }}
-          >
-            <div className="inp">
-              <label>
-                Title <span>*</span>
-              </label>
-              <input
-                type="text"
-                required
-                placeholder="Enter Event Title"
-                onChange={(e) => {
-                  setcreateEvent({
-                    ...createEvent,
-                    eventName: e.target.value,
-                  });
-                }}
-              />
-            </div>
-            <div className="inp">
-              <label htmlFor="Description">
-                Description <span>*</span>
-              </label>
-              <input
-                type="text"
-                required
-                placeholder="Enter Event Description"
-                onChange={(e) => {
-                  setcreateEvent({
-                    ...createEvent,
-                    eventDescription: e.target.value,
-                  });
-                }}
-              />
-            </div>
-            <div className="mode">
-              <div className="privacy">
-                <label htmlFor="Privacy">
-                  Privacy <span>*</span>
-                </label>
-                <select
-                  name="Privacy"
-                  id=""
-                  required
-                  value={createEvent.Privacy}
-                  onChange={(e) =>
-                    setcreateEvent({ ...createEvent, Privacy: e.target.value })
-                  }
-                >
-                  <option value="disabled" disabled>
-                    Choose from the options
-                  </option>
-
-                  <option value="Public">Public</option>
-                  <option value="Private">Private</option>
-                </select>
-              </div>
-              <div className="medium ">
-                <label htmlFor="medium">
-                  Medium <span>*</span>
-                </label>
-                <select
-                  name="Medium"
-                  id=""
-                  required
-                  value={createEvent.Medium}
-                  onChange={(e) =>
-                    setcreateEvent({ ...createEvent, Medium: e.target.value })
-                  }
-                >
-                  <option value="disabled" disabled>
-                    Choose from the options
-                  </option>
-
-                  <option value="Online">Online</option>
-                  <option value="In Person">In Person</option>
-                </select>
-              </div>
-            </div>
-            <div className="date">
-              <div className="date-time inp">
-                <label htmlFor="Start Date Time">
-                  Start Date Time <span>*</span>
-                </label>
-                <input
-                  type="date"
-                  required
-                  onChange={(e) => {
-                    setcreateEvent({
-                      ...createEvent,
-                      startDate: e.target.value,
-                    });
-                  }}
-                />
-              </div>
-              <div className="date-time inp">
-                <label htmlFor="End Date Time">
-                  End Date Time <span>*</span>
-                </label>
-                <input
-                  type="date"
-                  required
-                  onChange={(e) => {
-                    setcreateEvent({
-                      ...createEvent,
-                      endDate: e.target.value,
-                    });
-                  }}
-                />
-              </div>
-            </div>
-            <div className="date">
-              <div className="inp">
-                <label htmlFor="Duration">Duration</label>
-                <input type="text" placeholder="Enter Event Duration" />
-              </div>
-              <div className="inp">
-                <label>Max Participants</label>
-                <input
-                  type="number"
-                  onChange={(e) => {
-                    setcreateEvent({
-                      ...createEvent,
-                      Participants: e.target.value,
-                    });
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="modee">
-              <div className="category">
-                <label htmlFor="">
-                  Category <span>*</span>
-                </label>
-                <select
-                  name="Category"
-                  id=""
-                  required
-                  value={createEvent.Category}
-                  onChange={(e) =>
-                    setcreateEvent({ ...createEvent, Category: e.target.value })
-                  }
-                >
-                  <option value="disabled" disabled>
-                    Choose from the categories
-                  </option>
-
-                  <option value="Conference">Conference</option>
-                  <option value="Music & Arts">Music & Arts</option>
-                  <option value="Social">Social</option>
-                  <option value="Sports">Sports</option>
-                  <option value="Networking">Networking</option>
-                  <option value="Wellness & Lifestyle">
-                    Wellness & Lifestyle
-                  </option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <div className="accept">
-                <label htmlFor="rsvp"> Accepting RSVPs?</label>
-                <select
-                  name="RSVP"
-                  id=""
-                  required
-                  value={createEvent.RSVP}
-                  onChange={(e) =>
-                    setcreateEvent({ ...createEvent, RSVP: e.target.value })
-                  }
-                >
-                  <option value="disabled" disabled>
-                    Choose from the options
-                  </option>
-
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                </select>
-              </div>
-
-              <div className="ticket">
-                <label htmlFor="ticket">
-                  Tickets <span>*</span>
-                </label>
-                <select
-                  name="Tickets"
-                  id=""
-                  value={createEvent.Tickets}
-                  required
-                  onChange={(e) =>
-                    setcreateEvent({ ...createEvent, Tickets: e.target.value })
-                  }
-                >
-                  <option value="disabled" disabled>
-                    Choose any of the options
-                  </option>
-
-                  <option value="Free">Free</option>
-                  <option value="Paid">Paid</option>
-                </select>
-              </div>
-            </div>
-            <div className="inp textarea">
-              <label htmlFor="Terms">Terms and Conditions</label>
-              {/* <input type="text" /> */}
-              <textarea name="" id=""></textarea>
-            </div>
-            <div className="inp">
-              <label htmlFor="Terms">
-                Location <span>*</span>
-              </label>
-              <input type="text" placeholder="Enter Location " required />
-            </div>
-            <div className="inp file">
-              <label>
-                Select FIle <span>*</span>
-              </label>
-              <input
-                type="file"
-                id="eventImage"
-                name="eventImage"
-                accept="image"
-                onChange={handleImageChange}
-              />
-            </div>
-
-            <button type="submit" className="btn">
-              Add Event
+        <div className="eventCont">
+          <div className="sidenav">
+            <SideNav />
+          </div>
+          <div className="create_event DashGlass">
+            <button onClick={handleCreateClose} className="close">
+              <X />
             </button>
-          </form>
+            <h2>Create Event</h2>
+            <form
+              className="form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                addNewEvent(e);
+              }}
+            >
+              <div className="inp">
+                <label>
+                  Title <span>*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Enter Event Title"
+                  onChange={(e) => {
+                    setcreateEvent({
+                      ...createEvent,
+                      eventName: e.target.value,
+                    });
+                  }}
+                />
+              </div>
+              <div className="inp">
+                <label htmlFor="Description">
+                  Description <span>*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Enter Event Description"
+                  onChange={(e) => {
+                    setcreateEvent({
+                      ...createEvent,
+                      eventDescription: e.target.value,
+                    });
+                  }}
+                />
+              </div>
+              <div className="mode">
+                <div className="privacy">
+                  <label htmlFor="Privacy">
+                    Privacy <span>*</span>
+                  </label>
+                  <select
+                    name="Privacy"
+                    id=""
+                    required
+                    value={createEvent.Privacy}
+                    onChange={(e) =>
+                      setcreateEvent({
+                        ...createEvent,
+                        Privacy: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="disabled" disabled>
+                      Choose from the options
+                    </option>
+
+                    <option value="Public">Public</option>
+                    <option value="Private">Private</option>
+                  </select>
+                </div>
+                <div className="medium ">
+                  <label htmlFor="medium">
+                    Medium <span>*</span>
+                  </label>
+                  <select
+                    name="Medium"
+                    id=""
+                    required
+                    value={createEvent.Medium}
+                    onChange={(e) =>
+                      setcreateEvent({ ...createEvent, Medium: e.target.value })
+                    }
+                  >
+                    <option value="disabled" disabled>
+                      Choose from the options
+                    </option>
+
+                    <option value="Online">Online</option>
+                    <option value="In Person">In Person</option>
+                  </select>
+                </div>
+              </div>
+              <div className="date">
+                <div className="date-time inp">
+                  <label htmlFor="Start Date Time">
+                    Start Date Time <span>*</span>
+                  </label>
+                  <input
+                    type="date"
+                    required
+                    onChange={(e) => {
+                      setcreateEvent({
+                        ...createEvent,
+                        startDate: e.target.value,
+                      });
+                    }}
+                  />
+                </div>
+                <div className="date-time inp">
+                  <label htmlFor="End Date Time">
+                    End Date Time <span>*</span>
+                  </label>
+                  <input
+                    type="date"
+                    required
+                    onChange={(e) => {
+                      setcreateEvent({
+                        ...createEvent,
+                        endDate: e.target.value,
+                      });
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="date">
+                <div className="inp">
+                  <label htmlFor="Duration">Duration</label>
+                  <input type="text" placeholder="Enter Event Duration" />
+                </div>
+                <div className="inp">
+                  <label>Max Participants</label>
+                  <input
+                    type="number"
+                    onChange={(e) => {
+                      setcreateEvent({
+                        ...createEvent,
+                        Participants: e.target.value,
+                      });
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="modee">
+                <div className="category">
+                  <label htmlFor="">
+                    Category <span>*</span>
+                  </label>
+                  <select
+                    name="Category"
+                    id=""
+                    required
+                    value={createEvent.Category}
+                    onChange={(e) =>
+                      setcreateEvent({
+                        ...createEvent,
+                        Category: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="disabled" disabled>
+                      Choose from the categories
+                    </option>
+
+                    <option value="Conference">Conference</option>
+                    <option value="Music & Arts">Music & Arts</option>
+                    <option value="Social">Social</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Networking">Networking</option>
+                    <option value="Wellness & Lifestyle">
+                      Wellness & Lifestyle
+                    </option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div className="accept">
+                  <label htmlFor="rsvp"> Accepting RSVPs?</label>
+                  <select
+                    name="RSVP"
+                    id=""
+                    required
+                    value={createEvent.RSVP}
+                    onChange={(e) =>
+                      setcreateEvent({ ...createEvent, RSVP: e.target.value })
+                    }
+                  >
+                    <option value="disabled" disabled>
+                      Choose from the options
+                    </option>
+
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+
+                <div className="ticket">
+                  <label htmlFor="ticket">
+                    Tickets <span>*</span>
+                  </label>
+                  <select
+                    name="Tickets"
+                    id=""
+                    value={createEvent.Tickets}
+                    required
+                    onChange={(e) =>
+                      setcreateEvent({
+                        ...createEvent,
+                        Tickets: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="disabled" disabled>
+                      Choose any of the options
+                    </option>
+
+                    <option value="Free">Free</option>
+                    <option value="Paid">Paid</option>
+                  </select>
+                </div>
+              </div>
+              <div className="inp textarea">
+                <label htmlFor="Terms">Terms and Conditions</label>
+                {/* <input type="text" /> */}
+                <textarea name="" id=""></textarea>
+              </div>
+              <div className="inp">
+                <label htmlFor="Terms">
+                  Location <span>*</span>
+                </label>
+                <input type="text" placeholder="Enter Location " required />
+              </div>
+              <div className="inp file">
+                <label>
+                  Select FIle <span>*</span>
+                </label>
+                <input
+                  type="file"
+                  id="eventImage"
+                  name="eventImage"
+                  accept="image"
+                  onChange={handleImageChange}
+                />
+              </div>
+
+              <button type="submit" className="btn">
+                Add Event
+              </button>
+            </form>
+          </div>
         </div>
       )}
     </div>

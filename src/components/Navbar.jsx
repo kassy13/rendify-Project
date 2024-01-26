@@ -57,14 +57,14 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navbar */}
-      <nav className={`mobile ${isOpen ? "open" : ""}`}>
+      <nav className={`mobile ${isOpen ? "openNav" : ""}`}>
         <div className={`logoimg ${isOpen ? "open" : ""}`}>
           <Link to="/">
             <img src={NavLogo} alt="" />
           </Link>
         </div>
         {isOpen && (
-          <div className="nav_links">
+          <div className={`nav_links ${isOpen ? "openNav" : ""}`}>
             {user ? (
               <div className="nav_link">
                 <Link to="/explore" className="">

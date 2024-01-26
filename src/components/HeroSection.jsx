@@ -3,6 +3,7 @@ import { clientContentful } from "../Contentful/client";
 import "../sass/hero.scss";
 import heroimga from "../assets/Glass_Prism0094.png";
 import { Link } from "react-router-dom";
+import Loader from "../Loader/Loader";
 // import heroimga from "../assets/Clay_Purple0077.png";
 
 const HeroSection = () => {
@@ -47,7 +48,9 @@ const HeroSection = () => {
   }, [getHeroDetails]);
 
   console.log(hero);
-  return (
+  return heroLoading ? (
+    <Loader />
+  ) : (
     <div>
       {hero.map((item) => {
         const { id, heroTitle, heroPara, heroimg } = item;

@@ -12,6 +12,9 @@
   background: #fff;
   box-shadow: -1px 0 5px rgba(0, 0, 0, 0.1);
   z-index: 999;
+  @include mediaQuery(767px) {
+    width: 70%;
+  }
 }
 .user-list {
   position: fixed;
@@ -26,6 +29,9 @@
   overflow-y: scroll;
 
   //   background-color: #007bff;
+  @include mediaQuery(767px) {
+    width: 70%;
+  }
 
   .header {
     display: flex;
@@ -64,6 +70,9 @@
     padding-bottom: 1rem;
     padding-inline: 1rem;
     padding-block: 1rem;
+    @include mediaQuery(767px) {
+      flex-direction: column;
+    }
     &:hover {
       background-color: rgba(128, 128, 128, 0.185);
       border-radius: 10px;

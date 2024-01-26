@@ -151,265 +151,268 @@ const UpdateEvent = () => {
   };
 
   return (
-    <div className="update_event ">
-      <div className="sidenav">
-        <SideNav />
-      </div>
-      <div className="other_side">
-        <form
-          className="form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleUpdateEvent(e);
-          }}
-        >
-          <div className="inp">
-            <label>
-              Title <span>*</span>
-            </label>
-            <input
-              type="text"
-              required
-              placeholder="Enter Event Title"
-              onChange={(e) => {
-                setUpdatedEventDetails({
-                  ...updatedEventDetails,
-                  eventName: e.target.value,
-                });
-              }}
-              value={updatedEventDetails.eventName}
-            />
-          </div>
-          <div className="inp">
-            <label htmlFor="Description">
-              Description <span>*</span>
-            </label>
-            <input
-              type="text"
-              required
-              placeholder="Enter Event Description"
-              onChange={(e) => {
-                setUpdatedEventDetails({
-                  ...updatedEventDetails,
-                  eventDescription: e.target.value,
-                });
-              }}
-              value={updatedEventDetails.eventDescription}
-            />
-          </div>
-          <div className="mode">
-            <div className="privacy">
-              <label htmlFor="Privacy">
-                Privacy <span>*</span>
-              </label>
-              <select
-                name="Privacy"
-                id=""
-                required
-                onChange={(e) =>
-                  setUpdatedEventDetails({
-                    ...updatedEventDetails,
-                    Privacy: e.target.value,
-                  })
-                }
-                value={updatedEventDetails.Privacy}
-              >
-                <option value="disabled" disabled>
-                  Choose from the options
-                </option>
-
-                <option value="Public">Public</option>
-                <option value="Private">Private</option>
-              </select>
-            </div>
-            <div className="medium ">
-              <label htmlFor="medium">
-                Medium <span>*</span>
-              </label>
-              <select
-                name="Medium"
-                id=""
-                required
-                onChange={(e) =>
-                  setUpdatedEventDetails({
-                    ...updatedEventDetails,
-                    Medium: e.target.value,
-                  })
-                }
-                value={updatedEventDetails.Medium || ""}
-              >
-                <option value="disabled" disabled>
-                  Choose from the options
-                </option>
-
-                <option value="Online">Online</option>
-                <option value="In Person">In Person</option>
-              </select>
-            </div>
-          </div>
-          <div className="date">
-            <div className="date-time inp">
-              <label htmlFor="Start Date Time">
-                Start Date Time <span>*</span>
-              </label>
-              <input
-                type="date"
-                required
-                onChange={(e) => {
-                  setUpdatedEventDetails({
-                    ...updatedEventDetails,
-                    startDate: e.target.value,
-                  });
-                }}
-                value={updatedEventDetails.startDate}
-              />
-            </div>
-            <div className="date-time inp">
-              <label htmlFor="End Date Time">
-                End Date Time <span>*</span>
-              </label>
-              <input
-                type="date"
-                required
-                onChange={(e) => {
-                  setUpdatedEventDetails({
-                    ...updatedEventDetails,
-                    endDate: e.target.value,
-                  });
-                }}
-                value={updatedEventDetails.endDate}
-              />
-            </div>
-          </div>
-          <div className="date">
+    <div className="update_event Dash ">
+      <div className="update">
+        <div className="sidenav">
+          <SideNav />
+        </div>
+        <div className="other_side DashGlass">
+          <h1>Update Event</h1>
+          <form
+            className="form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleUpdateEvent(e);
+            }}
+          >
             <div className="inp">
-              <label htmlFor="Duration">Duration</label>
-              <input type="text" placeholder="Enter Event Duration" />
+              <label>
+                Title <span>*</span>
+              </label>
+              <input
+                type="text"
+                required
+                placeholder="Enter Event Title"
+                onChange={(e) => {
+                  setUpdatedEventDetails({
+                    ...updatedEventDetails,
+                    eventName: e.target.value,
+                  });
+                }}
+                value={updatedEventDetails.eventName}
+              />
             </div>
             <div className="inp">
-              <label>Max Participants</label>
+              <label htmlFor="Description">
+                Description <span>*</span>
+              </label>
               <input
-                type="number"
+                type="text"
+                required
+                placeholder="Enter Event Description"
                 onChange={(e) => {
                   setUpdatedEventDetails({
                     ...updatedEventDetails,
-                    Participants: e.target.value,
+                    eventDescription: e.target.value,
                   });
                 }}
-                value={updatedEventDetails.Participants}
+                value={updatedEventDetails.eventDescription}
               />
             </div>
-          </div>
+            <div className="mode">
+              <div className="privacy">
+                <label htmlFor="Privacy">
+                  Privacy <span>*</span>
+                </label>
+                <select
+                  name="Privacy"
+                  id=""
+                  required
+                  onChange={(e) =>
+                    setUpdatedEventDetails({
+                      ...updatedEventDetails,
+                      Privacy: e.target.value,
+                    })
+                  }
+                  value={updatedEventDetails.Privacy}
+                >
+                  <option value="disabled" disabled>
+                    Choose from the options
+                  </option>
 
-          <div className="modee">
-            <div className="category">
-              <label htmlFor="">
-                Category <span>*</span>
+                  <option value="Public">Public</option>
+                  <option value="Private">Private</option>
+                </select>
+              </div>
+              <div className="medium ">
+                <label htmlFor="medium">
+                  Medium <span>*</span>
+                </label>
+                <select
+                  name="Medium"
+                  id=""
+                  required
+                  onChange={(e) =>
+                    setUpdatedEventDetails({
+                      ...updatedEventDetails,
+                      Medium: e.target.value,
+                    })
+                  }
+                  value={updatedEventDetails.Medium || ""}
+                >
+                  <option value="disabled" disabled>
+                    Choose from the options
+                  </option>
+
+                  <option value="Online">Online</option>
+                  <option value="In Person">In Person</option>
+                </select>
+              </div>
+            </div>
+            <div className="date">
+              <div className="date-time inp">
+                <label htmlFor="Start Date Time">
+                  Start Date Time <span>*</span>
+                </label>
+                <input
+                  type="date"
+                  required
+                  onChange={(e) => {
+                    setUpdatedEventDetails({
+                      ...updatedEventDetails,
+                      startDate: e.target.value,
+                    });
+                  }}
+                  value={updatedEventDetails.startDate}
+                />
+              </div>
+              <div className="date-time inp">
+                <label htmlFor="End Date Time">
+                  End Date Time <span>*</span>
+                </label>
+                <input
+                  type="date"
+                  required
+                  onChange={(e) => {
+                    setUpdatedEventDetails({
+                      ...updatedEventDetails,
+                      endDate: e.target.value,
+                    });
+                  }}
+                  value={updatedEventDetails.endDate}
+                />
+              </div>
+            </div>
+            <div className="date">
+              <div className="inp">
+                <label htmlFor="Duration">Duration</label>
+                <input type="text" placeholder="Enter Event Duration" />
+              </div>
+              <div className="inp">
+                <label>Max Participants</label>
+                <input
+                  type="number"
+                  onChange={(e) => {
+                    setUpdatedEventDetails({
+                      ...updatedEventDetails,
+                      Participants: e.target.value,
+                    });
+                  }}
+                  value={updatedEventDetails.Participants}
+                />
+              </div>
+            </div>
+
+            <div className="modee">
+              <div className="category">
+                <label htmlFor="">
+                  Category <span>*</span>
+                </label>
+                <select
+                  name="Category"
+                  id=""
+                  required
+                  onChange={(e) =>
+                    setUpdatedEventDetails({
+                      ...updatedEventDetails,
+                      Category: e.target.value,
+                    })
+                  }
+                  value={updatedEventDetails.Category || ""}
+                >
+                  <option value="disabled" disabled>
+                    Choose from the categories
+                  </option>
+
+                  <option value="Conference">Conference</option>
+                  <option value="Music & Arts">Music & Arts</option>
+                  <option value="Social">Social</option>
+                  <option value="Sports">Sports</option>
+                  <option value="Networking">Networking</option>
+                  <option value="Wellness & Lifestyle">
+                    Wellness & Lifestyle
+                  </option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div className="accept">
+                <label htmlFor="rsvp"> Accepting RSVPs?</label>
+                <select
+                  name="RSVP"
+                  id=""
+                  required
+                  onChange={(e) =>
+                    setUpdatedEventDetails({
+                      ...updatedEventDetails,
+                      RSVP: e.target.value,
+                    })
+                  }
+                  value={updatedEventDetails.RSVP || ""}
+                >
+                  <option value="disabled" disabled>
+                    Choose from the options
+                  </option>
+
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div className="ticket">
+                <label htmlFor="ticket">
+                  Tickets <span>*</span>
+                </label>
+                <select
+                  name="Tickets"
+                  id=""
+                  required
+                  onChange={(e) =>
+                    setUpdatedEventDetails({
+                      ...updatedEventDetails,
+                      Tickets: e.target.value,
+                    })
+                  }
+                  value={updatedEventDetails.Tickets || ""}
+                >
+                  <option value="disabled" disabled>
+                    Choose any of the options
+                  </option>
+
+                  <option value="Free">Free</option>
+                  <option value="Paid">Paid</option>
+                </select>
+              </div>
+            </div>
+            <div className="inp textarea">
+              <label htmlFor="Terms">Terms and Conditions</label>
+              {/* <input type="text" /> */}
+              <textarea name="" id=""></textarea>
+            </div>
+            <div className="inp">
+              <label htmlFor="Terms">
+                Location <span>*</span>
               </label>
-              <select
-                name="Category"
-                id=""
-                required
-                onChange={(e) =>
-                  setUpdatedEventDetails({
-                    ...updatedEventDetails,
-                    Category: e.target.value,
-                  })
-                }
-                value={updatedEventDetails.Category || ""}
-              >
-                <option value="disabled" disabled>
-                  Choose from the categories
-                </option>
-
-                <option value="Conference">Conference</option>
-                <option value="Music & Arts">Music & Arts</option>
-                <option value="Social">Social</option>
-                <option value="Sports">Sports</option>
-                <option value="Networking">Networking</option>
-                <option value="Wellness & Lifestyle">
-                  Wellness & Lifestyle
-                </option>
-                <option value="Other">Other</option>
-              </select>
+              <input type="text" placeholder="Enter Location " required />
             </div>
-
-            <div className="accept">
-              <label htmlFor="rsvp"> Accepting RSVPs?</label>
-              <select
-                name="RSVP"
-                id=""
-                required
-                onChange={(e) =>
-                  setUpdatedEventDetails({
-                    ...updatedEventDetails,
-                    RSVP: e.target.value,
-                  })
-                }
-                value={updatedEventDetails.RSVP || ""}
-              >
-                <option value="disabled" disabled>
-                  Choose from the options
-                </option>
-
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-
-            <div className="ticket">
-              <label htmlFor="ticket">
-                Tickets <span>*</span>
+            <div className="inp file">
+              <label>
+                Select FIle <span>*</span>
               </label>
-              <select
-                name="Tickets"
-                id=""
-                required
-                onChange={(e) =>
-                  setUpdatedEventDetails({
-                    ...updatedEventDetails,
-                    Tickets: e.target.value,
-                  })
-                }
-                value={updatedEventDetails.Tickets || ""}
-              >
-                <option value="disabled" disabled>
-                  Choose any of the options
-                </option>
-
-                <option value="Free">Free</option>
-                <option value="Paid">Paid</option>
-              </select>
+              <input
+                type="file"
+                id="eventImage"
+                name="eventImage"
+                accept="image"
+                onChange={handleImageChange}
+              />
             </div>
-          </div>
-          <div className="inp textarea">
-            <label htmlFor="Terms">Terms and Conditions</label>
-            {/* <input type="text" /> */}
-            <textarea name="" id=""></textarea>
-          </div>
-          <div className="inp">
-            <label htmlFor="Terms">
-              Location <span>*</span>
-            </label>
-            <input type="text" placeholder="Enter Location " required />
-          </div>
-          <div className="inp file">
-            <label>
-              Select FIle <span>*</span>
-            </label>
-            <input
-              type="file"
-              id="eventImage"
-              name="eventImage"
-              accept="image"
-              onChange={handleImageChange}
-            />
-          </div>
-          {loading ? <Loader2 /> : ""}
-          <button type="submit" className="btn" onClick={handleUpdateEvent}>
-            Update Event
-          </button>
-        </form>
+            {loading ? <Loader2 /> : ""}
+            <button type="submit" className="btn" onClick={handleUpdateEvent}>
+              Update Event
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

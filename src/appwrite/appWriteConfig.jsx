@@ -30,7 +30,6 @@ export const EventBucket_Id = import.meta.env.VITE_EVENT_BUCKET_ID;
 export const FileOne = import.meta.env.VITE_FILE_ID_ONE;
 export const Project_Id = import.meta.env.VITE_PROJECT_ID;
 export const RsvpBucketID = import.meta.env.VITE_RSVP_BUCKET_ID;
-export const rsvpDatabaseId = import.meta.env.VITE_RSVP_DATABASE_ID;
 export const rsvpCollectionId = import.meta.env.VITE_RSVP_COLLECTION_ID;
 export const inviteCollectionId = import.meta.env.VITE_INVITE_COLLECTION_ID;
 export const mainProjectIdKey = import.meta.env.VITE_MAIN_API_KEY;

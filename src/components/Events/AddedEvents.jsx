@@ -77,35 +77,38 @@ const AddedEvents = ({ uploadedFile, onClose, onCardClick }) => {
   // console.log("File ID:", location.state.updatedEvent.eventImage);
 
   return (
-    <div className="mapped">
-      <div className="sidenav">
-        <SideNav />
-      </div>
-      {loading ? (
-        <Loader2 />
-      ) : (
-        <div className="other_side">
-          <div className="heading">
-            <h1>My Events</h1>
-            {/* <button onClick={handleClose}>
+    <div className="Dash">
+      <div className="mapped">
+        <div className="sidenav">
+          <SideNav />
+        </div>
+        {loading ? (
+          <Loader2 />
+        ) : (
+          <div className="other_side">
+            <div className="heading">
+              <h1>My Events</h1>
+              {/* <button onClick={handleClose}>
             <X className="icon_x" />
           </button> */}
-          </div>
+            </div>
 
-          <div key={eventDocuments.$id} className="each_event">
-            {eventDocuments.length === 0 ? (
-              <div className="noevent">
-                <p>No Events Found</p>
-                <img src={rsvpimg} alt="" />
-              </div>
-            ) : (
-              eventDocuments.map((document) => (
-                <Link key={document.$id} to={`/edit-event/${document.$id}`}>
-                  <div
-                    className="mapped_event"
-                    // onClick={() => handleCardClick("editevent")}
-                  >
-                    {/* <div className="addevent_img">
+            <div key={eventDocuments.$id} className="each_event">
+              {eventDocuments.length === 0 ? (
+                <div className="noevent">
+                  <p>No Events Found</p>
+                  <div className="addevent_img">
+                    <img src={rsvpimg} alt="" />
+                  </div>
+                </div>
+              ) : (
+                eventDocuments.map((document) => (
+                  <Link key={document.$id} to={`/edit-event/${document.$id}`}>
+                    <div
+                      className="mapped_event"
+                      // onClick={() => handleCardClick("editevent")}
+                    >
+                      {/* <div className="addevent_img">
                       {(
                         <img
                           src={`https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${document.eventImage}/view?project=656f89964f0ca3d8368e&mode=admin`}
@@ -117,7 +120,7 @@ const AddedEvents = ({ uploadedFile, onClose, onCardClick }) => {
                         />
                       )}
                     </div> */}
-                    {/* <div className="addevent_img">
+                      {/* <div className="addevent_img">
                       {document.eventImage && (
                         <img
                           src={storageBucket.getFilePreview(
@@ -129,7 +132,7 @@ const AddedEvents = ({ uploadedFile, onClose, onCardClick }) => {
                       )}
                     </div> */}
 
-                    {/* <div className="addevent_img">
+                      {/* <div className="addevent_img">
                       {document.eventImage && (
                         <img
                           src={
@@ -165,74 +168,75 @@ const AddedEvents = ({ uploadedFile, onClose, onCardClick }) => {
                       )}
                     </div> */}
 
-                    <div className="addevent_img">
-                      {(document.eventImage && (
-                        <img
-                          src={
-                            typeof document.eventImage === "string"
-                              ? document.eventImage.startsWith("https://")
-                                ? document.eventImage
-                                : `https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${document.eventImage}/view?project=656f89964f0ca3d8368e&mode=admin`
-                              : `https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${document.eventImage.$id}/view?project=656f89964f0ca3d8368e&mode=admin`
-                          }
-                          alt=""
-                        />
-                      )) ||
-                        (location.state?.updatedEvent?.eventImage && (
+                      <div className="addevent_img">
+                        {(document.eventImage && (
                           <img
                             src={
-                              location.state.updatedEvent.eventImage.startsWith(
-                                "https://"
-                              )
-                                ? location.state.updatedEvent.eventImage
-                                : `https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${location.state.updatedEvent.eventImage}/view?project=657c3799c6f17860adb1&mode=admin`
+                              typeof document.eventImage === "string"
+                                ? document.eventImage.startsWith("https://")
+                                  ? document.eventImage
+                                  : `https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${document.eventImage}/view?project=656f89964f0ca3d8368e&mode=admin`
+                                : `https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${document.eventImage.$id}/view?project=656f89964f0ca3d8368e&mode=admin`
                             }
-                            // https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/6590290b5fb8cf5e6350/view?project=656f89964f0ca3d8368e&mode=admin
                             alt=""
                           />
-                        ))}
-                    </div>
+                        )) ||
+                          (location.state?.updatedEvent?.eventImage && (
+                            <img
+                              src={
+                                location.state.updatedEvent.eventImage.startsWith(
+                                  "https://"
+                                )
+                                  ? location.state.updatedEvent.eventImage
+                                  : `https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${location.state.updatedEvent.eventImage}/view?project=657c3799c6f17860adb1&mode=admin`
+                              }
+                              // https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/6590290b5fb8cf5e6350/view?project=656f89964f0ca3d8368e&mode=admin
+                              alt=""
+                            />
+                          ))}
+                      </div>
 
-                    <div className="mapped_details">
-                      <h1>{document.eventName}</h1>
-                      <h4>{document.eventDescription}</h4>
+                      <div className="mapped_details">
+                        <h1>{document.eventName}</h1>
+                        <h4>{document.eventDescription}</h4>
 
-                      <p>
-                        Start Date:{" "}
-                        {new Date(document.startDate).toDateString()},
-                        <span>
-                          {" "}
-                          {new Date(document.startDate).toLocaleTimeString()}
-                        </span>
-                      </p>
-                      <p>
-                        End Date: {new Date(document.endDate).toDateString()},
-                        <span>
-                          {" "}
-                          {new Date(document.endDate).toLocaleTimeString()}
-                        </span>
-                      </p>
-                      <h6 className="catte">Category: {document.Category}</h6>
-                      {/* <h1>Creator User ID: {document.creatorUserId}</h1>
+                        <p>
+                          Start Date:{" "}
+                          {new Date(document.startDate).toDateString()},
+                          <span>
+                            {" "}
+                            {new Date(document.startDate).toLocaleTimeString()}
+                          </span>
+                        </p>
+                        <p>
+                          End Date: {new Date(document.endDate).toDateString()},
+                          <span>
+                            {" "}
+                            {new Date(document.endDate).toLocaleTimeString()}
+                          </span>
+                        </p>
+                        <h6 className="catte">Category: {document.Category}</h6>
+                        {/* <h1>Creator User ID: {document.creatorUserId}</h1>
           <p>{document.$id}</p> */}
-                      <p className="medium">
-                        {document.Medium === "In Person" ? (
-                          <MapPin className="icon" />
-                        ) : (
-                          <Laptop className="icon" />
-                        )}
-                      </p>
-                      <p>privacy: {document.Privacy}</p>
-                      <p>RSVP: {document.RSVP}</p>
-                      <p>Tickets: {document.Tickets}</p>
+                        <p className="medium">
+                          {document.Medium === "In Person" ? (
+                            <MapPin className="icon" />
+                          ) : (
+                            <Laptop className="icon" />
+                          )}
+                        </p>
+                        <p>privacy: {document.Privacy}</p>
+                        <p>RSVP: {document.RSVP}</p>
+                        <p>Tickets: {document.Tickets}</p>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))
-            )}
+                  </Link>
+                ))
+              )}
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

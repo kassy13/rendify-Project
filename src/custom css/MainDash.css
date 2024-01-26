@@ -1,0 +1,33 @@
+.MainContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.MainContent h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  padding-block: 2.3rem 0;
+}
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avat {
+  width: 3vw;
+  height: 3vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 1200px) {
+  .MainContent {
+    justify-content: flex-start;
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .MainContent {
+    align-items: center;
+  }
+}

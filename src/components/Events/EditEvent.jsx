@@ -103,104 +103,106 @@ const EditEvent = () => {
     // navigate("/invites", { state: { eventDetails } });
   };
   return (
-    <div className="edit-event">
-      <div className="sidenav">
-        <SideNav />
-      </div>
-      {!loading ? (
-        <Loader2 />
-      ) : (
-        <div className="other_side">
-          <div className="otherside_card">
-            <div className="otherside_img">
-              <img
-                src={
-                  typeof eventDetails.eventImage === "string"
-                    ? eventDetails.eventImage.startsWith("https://")
-                      ? eventDetails.eventImage
-                      : `https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${eventDetails.eventImage}/view?project=656f89964f0ca3d8368e&mode=admin`
-                    : `https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${eventDetails.eventImage.$id}/view?project=656f89964f0ca3d8368e&mode=admin`
-                }
-                alt=""
-              />
-            </div>
-            <div className="textt">
-              <p>Event Name: {eventDetails.eventName}</p>
-              <p> category :{eventDetails.Category} </p>
-              <p>Privacy: {eventDetails.Privacy}</p>
-              <p>
-                Start Date: {new Date(eventDetails.startDate).toDateString()},
-                <span>
-                  {" "}
-                  {new Date(eventDetails.startDate).toLocaleTimeString()}
-                </span>
-              </p>
-              <p>
-                End Date: {new Date(eventDetails.endDate).toDateString()},
-                <span>
-                  {" "}
-                  {new Date(eventDetails.endDate).toLocaleTimeString()}
-                </span>
-              </p>
-            </div>
-          </div>
-
-          <div className="actions">
-            <button
-              className="btn"
-              onClick={(e) => handleEditEvent(e, eventDetails.$id)}
-            >
-              <p>
-                Edit <Pen />
-              </p>
-            </button>
-            <button className="btn" onClick={toggleDeleteModal}>
-              <p>
-                Delete <Trash />
-              </p>
-            </button>
-            <button className="btn" onClick={copyEventIdToClipboard}>
-              <p>
-                Copy Id <Copy />
-              </p>
-            </button>
-            <button
-              className="btn"
-              onClick={(e) => handleInviteEvent(e, eventDetails.$id)}
-            >
-              <p>
-                Invite <Share />
-              </p>
-            </button>
-          </div>
+    <div className="Dash">
+      <div className="edit-event">
+        <div className="sidenav">
+          <SideNav />
         </div>
-      )}
+        {!loading ? (
+          <Loader2 />
+        ) : (
+          <div className="other_side">
+            <div className="otherside_card">
+              <div className="otherside_img">
+                <img
+                  src={
+                    typeof eventDetails.eventImage === "string"
+                      ? eventDetails.eventImage.startsWith("https://")
+                        ? eventDetails.eventImage
+                        : `https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${eventDetails.eventImage}/view?project=656f89964f0ca3d8368e&mode=admin`
+                      : `https://cloud.appwrite.io/v1/storage/buckets/657ca5c1b97d85e735d0/files/${eventDetails.eventImage.$id}/view?project=656f89964f0ca3d8368e&mode=admin`
+                  }
+                  alt=""
+                />
+              </div>
+              <div className="textt">
+                <p>Event Name: {eventDetails.eventName}</p>
+                <p> category :{eventDetails.Category} </p>
+                <p>Privacy: {eventDetails.Privacy}</p>
+                <p>
+                  Start Date: {new Date(eventDetails.startDate).toDateString()},
+                  <span>
+                    {" "}
+                    {new Date(eventDetails.startDate).toLocaleTimeString()}
+                  </span>
+                </p>
+                <p>
+                  End Date: {new Date(eventDetails.endDate).toDateString()},
+                  <span>
+                    {" "}
+                    {new Date(eventDetails.endDate).toLocaleTimeString()}
+                  </span>
+                </p>
+              </div>
+            </div>
 
-      {showDeleteModal && (
-        <div className="delete-modal-overlay">
-          <div className="delete-modal">
-            <h2>Confirm Deletion</h2>
-            <p>Are you sure you want to delete this event?</p>
-            <div className="modal-buttons">
+            <div className="actions">
+              <button
+                className="btn"
+                onClick={(e) => handleEditEvent(e, eventDetails.$id)}
+              >
+                <p>
+                  Edit <Pen />
+                </p>
+              </button>
               <button className="btn" onClick={toggleDeleteModal}>
-                Cancel
+                <p>
+                  Delete <Trash />
+                </p>
+              </button>
+              <button className="btn" onClick={copyEventIdToClipboard}>
+                <p>
+                  Copy Id <Copy />
+                </p>
               </button>
               <button
                 className="btn"
-                onClick={(e) => handleDeleteEvent(e, eventDetails.$id)}
+                onClick={(e) => handleInviteEvent(e, eventDetails.$id)}
               >
-                Delete
+                <p>
+                  Invite <Share />
+                </p>
               </button>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {showUserList && (
-        <div className="side-pop-up">
-          <UserList onClose={toggleUsersList} />
-        </div>
-      )}
+        {showDeleteModal && (
+          <div className="delete-modal-overlay">
+            <div className="delete-modal">
+              <h2>Confirm Deletion</h2>
+              <p>Are you sure you want to delete this event?</p>
+              <div className="modal-buttons">
+                <button className="btn" onClick={toggleDeleteModal}>
+                  Cancel
+                </button>
+                <button
+                  className="btn"
+                  onClick={(e) => handleDeleteEvent(e, eventDetails.$id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {showUserList && (
+          <div className="side-pop-up">
+            <UserList onClose={toggleUsersList} eventDetails={eventDetails} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -5,10 +5,10 @@ import { Calendar, MapPin } from "@phosphor-icons/react";
 import { Bookmarks, TwitterLogo } from "@phosphor-icons/react/dist/ssr";
 import { useAuth } from "../../utils/AuthContext";
 import {
+  Database_Id,
   ID,
   databases,
   rsvpCollectionId,
-  rsvpDatabaseId,
 } from "../../appwrite/appWriteConfig";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -68,18 +68,18 @@ const EventDetails = () => {
         const rsvpData = {
           eventId: selectedEvent.id,
           userId: user.$id,
-          eventCategory, // Make sure these fields are defined in your selectedEvent
-          eventName,
-          tickets,
-          rsvp,
-          eventDate,
-          eventDescription,
-          eventLocation,
-          price,
-          eventImage,
+          eventCategory: selectedEvent.eventCategory, // Make sure these fields are defined in your selectedEvent
+          eventName: selectedEvent.eventName,
+          tickets: selectedEvent.tickets,
+          rsvp: selectedEvent.rsvp,
+          eventDate: selectedEvent.eventDate,
+          eventDescription: selectedEvent.eventDescription,
+          // eventLocation: selectedEvent.eventCoord,
+          price: selectedEvent.price,
+          eventImagee: selectedEvent.eventImage, // Ensure it's a non-empty string
         };
         const response = await databases.createDocument(
-          rsvpDatabaseId,
+          Database_Id,
           rsvpCollectionId,
           ID.unique(),
           rsvpData

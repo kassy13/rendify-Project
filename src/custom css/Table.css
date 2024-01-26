@@ -1,0 +1,22 @@
+.Table {
+  padding-top: 2rem;
+}
+.tableContainer {
+  overflow-y: scroll !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .Table {
+    width: 80vw;
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .Table {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90vw;
+  }
+}

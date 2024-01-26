@@ -1,0 +1,14 @@
+@import "_variables";
+@import "base";
+@import "_mixins";
+@import "_mediaQuery";
+
+.btn {
+  @include Button($white, $primaryColor, $tertiaryColor);
+}
+.btnlogout {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
