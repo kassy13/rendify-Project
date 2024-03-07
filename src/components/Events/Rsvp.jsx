@@ -20,9 +20,9 @@ const Rsvp = () => {
   const { user } = useAuth();
   const [userRsvps, setUserRsvps] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [qrcodeData, setQrcodeData] = useState("");
-  const [scannedData, setScannedData] = useState(null);
-  const [showQrCodeModal, setShowQrCodeModal] = useState(false);
+  // const [qrcodeData, setQrcodeData] = useState("");
+  // const [scannedData, setScannedData] = useState(null);
+  // const [showQrCodeModal, setShowQrCodeModal] = useState(false);
 
   // Function to trim event description to 150 words
   const trimEventDescription = (description) => {
@@ -56,37 +56,37 @@ const Rsvp = () => {
     fetchUserRsvps();
   }, [user, id]);
 
-  const generateQrCode = (event) => {
-    const qrCodeData = JSON.stringify(event);
-    setQrcodeData(qrCodeData);
-    setShowQrCodeModal(true);
-    console.log("qrcodedata", qrCodeData);
-  };
+  // const generateQrCode = (event) => {
+  //   const qrCodeData = JSON.stringify(event);
+  //   setQrcodeData(qrCodeData);
+  //   setShowQrCodeModal(true);
+  //   console.log("qrcodedata", qrCodeData);
+  // };
 
-  const handleScan = () => {
-    try {
-      const parsedData = JSON.parse(qrcodeData);
-      console.log("Scanned event details:", parsedData);
-      setScannedData(parsedData);
+  // const handleScan = () => {
+  //   try {
+  //     const parsedData = JSON.parse(qrcodeData);
+  //     console.log("Scanned event details:", parsedData);
+  //     setScannedData(parsedData);
 
-      // Create a new div element to display the scanned data
-      const displayDiv = document.createElement("div");
-      displayDiv.innerHTML = `
-        <h2>Scanned Event Details:</h2>
-        <p>Event Name: ${parsedData.eventName}</p>
-        <p>Event Ticket: ${parsedData.tickets}</p>
-        <p>Event Description: ${parsedData.eventDescription}</p>
-        <!-- Add more RSVP details as needed -->
-      `;
+  //     // Create a new div element to display the scanned data
+  //     const displayDiv = document.createElement("div");
+  //     displayDiv.innerHTML = `
+  //       <h2>Scanned Event Details:</h2>
+  //       <p>Event Name: ${parsedData.eventName}</p>
+  //       <p>Event Ticket: ${parsedData.tickets}</p>
+  //       <p>Event Description: ${parsedData.eventDescription}</p>
+  //       <!-- Add more RSVP details as needed -->
+  //     `;
 
-      // Append the created div to the body or another container
-      document.body.appendChild(displayDiv);
-    } catch (error) {
-      console.error("Error parsing QR code data:", error);
-    }
-  };
+  //     // Append the created div to the body or another container
+  //     document.body.appendChild(displayDiv);
+  //   } catch (error) {
+  //     console.error("Error parsing QR code data:", error);
+  //   }
+  // };
 
-  console.log("scanning", scannedData);
+  // console.log("scanning", scannedData);
 
   return (
     <div className="Dash">
@@ -126,12 +126,13 @@ const Rsvp = () => {
                           <img src={rsvp.eventImagee} alt="" />
                         </div>
                       </div>
-                      <button
+                      {/* <button
                         className="btn"
                         onClick={() => generateQrCode(rsvp)}
                       >
                         Generate Qr code
-                      </button>
+                      </button> */}
+                      <button className="btn">Generate Qr code</button>
                     </div>
                   ))
                 )}
@@ -140,29 +141,27 @@ const Rsvp = () => {
           )}
         </div>
       </div>
-
-      {showQrCodeModal && (
-        <div className="modal-container">
-          <div className="modal">
-            <button
-              className="close-btn"
-              onClick={() => setShowQrCodeModal(false)}
-            >
-              Close
-            </button>
-            <h2>Generated QR Code:</h2>
-            <QRCode value={qrcodeData} />
-          </div>
+      <div className="modal-container">
+        <div className="modal">
+          {/* <button
+            className="close-btn"
+            onClick={() => setShowQrCodeModal(false)}
+          >
+            Close
+          </button> */}
+          <button className="close-btn">Close</button>
+          <h2>Generated QR Code:</h2>
+          {/* <QRCode value={qrcodeData} /> */}
         </div>
-      )}
+      </div>
 
+      {/* 
       <QrReader
         delay={300}
         onError={console.error}
         onScan={handleScan}
         style={{ display: "none" }} // Hide the webcam
-      />
-
+      /> */}
       {/* {qrcodeData && (
         <div>
           <h2>Scanned Event Details:</h2>
