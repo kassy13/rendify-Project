@@ -7,9 +7,15 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "../../custom css/Table.css";
+import { useAuth } from "../../utils/AuthContext";
+import {
+  Collection_Id,
+  Database_Id,
+  databases,
+} from "../../appwrite/appWriteConfig";
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(events, rsvps, invites) {
+  return { events, rsvps, invites };
 }
 
 const rows = [
@@ -21,36 +27,75 @@ const rows = [
 ];
 
 export default function BasicTable() {
+  const { user } = useAuth();
+  const [events, setEvents] = React.useState([]);
+  // console.log(user);
+  React.useEffect(() => {
+    const fetchData = async function () {
+      try {
+        const response = await databases.listDocuments(
+          Database_Id,
+          Collection_Id
+        );
+        // Filter events based on the currently logged-in user
+        const filteredEvents = response.documents.filter(
+          (event) => event.creatorUserId === user.$id
+        );
+        console.log("filtered", filteredEvents);
+
+        // Sort filtered events by some criteria, assuming 'createdAt' field exists
+        const sortedEvents = filteredEvents.sort(
+          (a, b) => b.createdAt - a.createdAt
+        );
+
+        // Set only the first 3 events
+        setEvents(sortedEvents.slice(0, 3));
+        console.log(events, "fetched");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="Table">
       <h3>Recent Activities</h3>
 
       <TableContainer component={Paper} className="tableContainer">
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table
+          sx={{ minWidth: 650 }}
+          aria-label="simple table"
+          className="mainTable"
+        >
           <TableHead>
             <TableRow>
-              <TableCell>Dessert (100g serving)</TableCell>
-              <TableCell align="left">Calories</TableCell>
-              <TableCell align="left">Fat&nbsp;(g)</TableCell>
-              <TableCell align="left">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="left">Protein&nbsp;(g)</TableCell>
+              <TableCell align="left">Events</TableCell>
+              <TableCell align="left">RSVPs</TableCell>
+              <TableCell align="left">Invites</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.name}
+            {events.length > 0 ? (
+              events.map((event) => (
+                <TableRow
+                  key={event.$id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {event.eventName}
+                  </TableCell>
+                  <TableCell align="left">{event.RSVP}</TableCell>
+                  <TableCell align="left">{event.invites}</TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={3} align="center">
+                  No events found
                 </TableCell>
-                <TableCell align="left">{row.calories}</TableCell>
-                <TableCell align="left">{row.fat}</TableCell>
-                <TableCell align="left">{row.carbs}</TableCell>
-                <TableCell align="left">{row.protein}</TableCell>
               </TableRow>
-            ))}
+            )}
           </TableBody>
         </Table>
       </TableContainer>

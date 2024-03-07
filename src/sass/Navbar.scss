@@ -126,8 +126,10 @@ header {
 
       .hamburger {
         position: absolute;
-        right: 3rem;
+        top: 0.5rem;
+        right: 2rem;
         z-index: 1000000 !important;
+        // width: auto;
       }
     }
   }

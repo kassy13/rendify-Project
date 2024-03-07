@@ -90,10 +90,14 @@ import {
 } from "../../appwrite/appWriteConfig";
 import SideNav from "./SideNav";
 import { useAuth } from "../../utils/AuthContext";
+import "../../sass/invites.scss";
+import Loader from "../../Loader/Loader";
+import noEvent from "../../assets/evente.png";
 
 const Invites = () => {
   const [invites, setInvites] = useState();
   const { user } = useAuth();
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleGetInviteDetails = async () => {
     try {
@@ -111,6 +115,8 @@ const Invites = () => {
       }
     } catch (error) {
       console.log("error", error);
+    } finally {
+      setIsLoading(false);
     }
   };
   useEffect(() => {
@@ -119,22 +125,33 @@ const Invites = () => {
   console.log("invites", invites);
   return (
     <div className="Dash">
-      <SideNav />
-      <div className="DashGlass">
-        <h1>Invites</h1>
-
-        {invites?.length > 0 ? (
-          <ul>
-            {invites.map((invite) => (
-              <li key={invite.$id}>
-                <p>Title: {invite.title}</p>
-                <p>Message: {invite.message}</p>
-                {/* Add other properties as needed */}
-              </li>
-            ))}
-          </ul>
+      <div className="notifications invitees">
+        <div className="sideNav">
+          <SideNav />
+        </div>
+        {isLoading ? (
+          <Loader />
         ) : (
-          <p>No invites available.</p>
+          <div className="main">
+            <h1>Invites</h1>
+
+            {invites?.length > 0 ? (
+              <ul className="invites noti">
+                {invites.map((invite) => (
+                  <li key={invite.$id}>
+                    <p>Title: {invite.title}</p>
+                    <p>Message: {invite.message}</p>
+                    {/* Add other properties as needed */}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="noEvent">
+                <p>No invites available.</p>
+                <img src={noEvent} alt="noEvent imag" />
+              </div>
+            )}
+          </div>
         )}
       </div>
     </div>

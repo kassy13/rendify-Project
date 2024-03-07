@@ -10,9 +10,9 @@
     flex-direction: column;
     gap: 1rem;
   }
-  .parentContainer {
+  /* .parentContainer {
     height: 12rem;
-  }
+  } */
 }
 @media screen and (max-width: 768px) {
   .Cards {

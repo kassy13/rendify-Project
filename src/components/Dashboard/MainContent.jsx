@@ -39,10 +39,10 @@ const MainContent = () => {
   return (
     <div className="MainContent">
       <h1>dashboard</h1>
-      <div className="flex justify-between items-center pb-3">
+      <div className="flex justify-between items-center pb-3 tt">
         <div className="avatar">
           <p>Welcome {user.name}</p>
-          <div className="avat">
+          <div className="w-8 h-8 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-18 lg:h-18 xl:w-12 xl:h-12 avat">
             <BigHead body="chest" clothing="shirt" clothingColor="black" />
           </div>
         </div>

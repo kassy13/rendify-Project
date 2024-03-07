@@ -30,8 +30,9 @@
       //   grid-template-columns: repeat(2, 1fr);
       gap: 0.5rem;
       overflow-x: auto;
+      white-space: nowrap !important;
       h4 {
-        white-space: nowrap; // Prevent text from wrapping to the next line
+        white-space: nowrap !important; // Prevent text from wrapping to the next line
         margin-right: 1rem; // Adjust margin between items
       }
     }
@@ -155,13 +156,15 @@
       }
     }
   }
-  .right {
+  .rightExplore {
     width: 50%;
+    // height: auto;
+
     border: 0.1px solid rgba(128, 128, 128, 0.31);
     border-radius: 10px;
     padding: $largeFontSize;
     line-height: 3;
-    margin-block: 3rem;
+    // margin-block: 3rem;
     @include mediaQuery(767px) {
       width: 100%;
     }
@@ -174,14 +177,24 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-
       font-size: $smallFontSize;
+
       .icon {
         width: $mediumFontSize;
         height: $mediumFontSize;
       }
     }
-
+    .rsvpExplore {
+      padding-top: 2rem;
+      div {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        // background-color: wheat;
+      }
+    }
     .tweet {
       display: flex;
       align-items: center;

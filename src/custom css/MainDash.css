@@ -24,6 +24,20 @@
   .MainContent {
     justify-content: flex-start;
     margin-top: 2rem;
+    width: 100%;
+  }
+  .avatar {
+    width: 100%;
+  }
+  .btn {
+    text-wrap: nowrap;
+    height: 50px;
+    width: 130px;
+    padding: 0.1px !important;
+  }
+  p {
+    font-size: 1.2rem;
+    word-wrap: none;
   }
 }
 @media screen and (max-width: 768px) {

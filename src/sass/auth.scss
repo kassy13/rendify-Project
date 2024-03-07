@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  border: 0.1px solid $primaryColor;
   @include mediaQuery(767px) {
     background-position: 70% top;
   }

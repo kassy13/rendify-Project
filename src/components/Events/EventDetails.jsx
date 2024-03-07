@@ -121,6 +121,7 @@ const EventDetails = () => {
       console.error("Error sharing on Twitter:", error);
     }
   };
+  console.log(price, "price");
 
   return (
     <>
@@ -136,7 +137,7 @@ const EventDetails = () => {
           <h3>{eventDescription}</h3>
           {/* Add more details as needed */}
         </div>
-        <div className="right">
+        <div className="rightExplore">
           <h1>{eventName}</h1>
 
           <p className="tex">
@@ -158,18 +159,20 @@ const EventDetails = () => {
 
           {/* Show a message if event location coordinates are not available */}
 
-          <div className="rsvp">
-            <div className=" flex justify-between pr-10 font-semibold">
+          <div className="rsvpExplore">
+            <div className=" ">
               <p>Event: {tickets}</p>
-              <p>{price === 0 ? "Free" : `NGN${price}`}</p>
+              <p>
+                {price === 0 || price === undefined ? "Free" : `NGN ${price}`}
+              </p>
+              <button
+                type="submit"
+                className="btn"
+                onClick={(e) => handleRsvp(e)}
+              >
+                RSVP
+              </button>
             </div>
-            <button
-              type="submit"
-              className="btn"
-              onClick={(e) => handleRsvp(e)}
-            >
-              RSVP
-            </button>
           </div>
           <div className="tweet" onClick={handleTweet}>
             <p>

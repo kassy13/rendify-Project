@@ -59,7 +59,8 @@ const Login = () => {
         navigate("/dashboard");
       } else {
         // If user is not authenticated, show an error
-        toast.error("Invalid Email or Password");
+        // toast.error("Invalid Email or Password");
+        console.log("Invalid Email or Password")
       }
     } catch (error) {
       console.error("Login error:", error);
@@ -69,7 +70,9 @@ const Login = () => {
         toast.error("Password must be at least 8 characters");
       } else if (error.message.includes("Invalid credentials")) {
         toast.error("Invalid Email or Password");
-      } else {
+      } 
+  
+      else {
         toast.error("An error occurred during login");
       }
     }

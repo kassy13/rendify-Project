@@ -1,0 +1,36 @@
+@import "_variables";
+@import "base";
+@import "_mixins";
+@import "_mediaQuery";
+
+.invitees {
+  //   display: flex;
+  //   flex-direction: column;
+  //   padding-inline: 3rem;
+  //   padding-block: 3rem;
+  h1 {
+    font-size: 30px;
+    text-align: center;
+    padding-block: 3rem;
+  }
+  .invites {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    // height: 20vh;
+    gap: 2rem;
+    cursor: pointer;
+    // background-color: aqua;
+
+    li {
+      padding: 1rem;
+      background-color: rgba(128, 128, 128, 0.35);
+      border-radius: 10px;
+    }
+  }
+  .noEvent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

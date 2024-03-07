@@ -24,6 +24,13 @@ const Rsvp = () => {
   const [scannedData, setScannedData] = useState(null);
   const [showQrCodeModal, setShowQrCodeModal] = useState(false);
 
+  // Function to trim event description to 150 words
+  const trimEventDescription = (description) => {
+    const words = description.split(/\s+/);
+    const trimmedDescription = words.slice(0, 50).join(" ");
+    return `${trimmedDescription}...`;
+  };
+
   useEffect(() => {
     const fetchUserRsvps = async () => {
       try {
@@ -107,7 +114,11 @@ const Rsvp = () => {
                         <div className="textss">
                           <p>Event Name: {rsvp.eventName}</p>
                           <p>Event Ticket: {rsvp.tickets}</p>
-                          <p>Event Description: {rsvp.eventDescription}</p>
+                          <p>
+                            Event Description:{" "}
+                            {trimEventDescription(rsvp.eventDescription)}
+                          </p>
+
                           <p>Event Location: {rsvp.eventLocation}</p>
                           <p>Event Category: {rsvp.eventCategory}</p>
                         </div>

@@ -28,6 +28,7 @@ import Invites from "./components/Dashboard/Invites";
 import Profile from "./components/Profile";
 import Notification from "./components/Dashboard/Notification";
 import CreateEvent from "./components/Events/CreateEvent";
+import Admindash from "./components/Admin/Admindash";
 
 function App() {
   return (
@@ -155,6 +156,7 @@ function App() {
                   </EventContextProvider>
                 }
               ></Route>
+              <Route path="/admindashboard" element={<Admindash />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
