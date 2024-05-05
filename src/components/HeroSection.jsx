@@ -59,6 +59,7 @@ const HeroSection = () => {
             <div className="text_wrap">
               <h1 className="hero_title">{heroTitle}</h1>
               <p> {heroPara} </p>
+            
               <Link to={"/explore"} className="btn">
                 Get Started
               </Link>

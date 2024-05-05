@@ -99,12 +99,12 @@ const Rsvp = () => {
           )}
         </div>
       </div>
-      <div className="modal-container">
+      {/* <div className="modal-container">
         <div className="modal">
           <button className="close-btn">Close</button>
           <h2>Generated QR Code:</h2>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

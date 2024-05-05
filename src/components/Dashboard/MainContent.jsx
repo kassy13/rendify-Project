@@ -6,36 +6,37 @@ import RightSide from "./RightSide";
 import { useAuth } from "../../utils/AuthContext";
 import { Link } from "react-router-dom";
 import "../../sass/btn.scss";
+// import BigHead from "@bigheads/core";
 import { BigHead } from "@bigheads/core";
 
 const MainContent = () => {
   const { user } = useAuth();
   const [avatarUrl, setAvatarUrl] = useState(null);
 
-  const fetchUserAvatar = async () => {
-    try {
-      const storedAvatarUrl = localStorage.getItem(`avatar_${user.id}`);
+  // const fetchUserAvatar = async () => {
+  //   try {
+  //     const storedAvatarUrl = localStorage.getItem(`avatar_${user.id}`);
 
-      if (!storedAvatarUrl) {
-        const avatarDetails = await BigHead({});
-        const avatarUrl = avatarDetails.src;
+  //     if (!storedAvatarUrl) {
+  //       const avatarDetails = BigHead();
+  //       const avatarUrl = avatarDetails.src;
 
-        setAvatarUrl(avatarUrl);
-        localStorage.setItem(`avatar_${user.id}`, avatarUrl);
-      } else {
-        setAvatarUrl(storedAvatarUrl);
-      }
-    } catch (error) {
-      console.error("Error fetching or storing user avatar", error);
-    }
-  };
+  //       setAvatarUrl(avatarUrl);
+  //       localStorage.setItem(`avatar_${user.id}`, avatarUrl);
+  //     } else {
+  //       setAvatarUrl(storedAvatarUrl);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching or storing user avatar", error);
+  //   }
+  // };
 
   console.log(user);
-  useEffect(() => {
-    if (user) {
-      fetchUserAvatar();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user) {
+  //     fetchUserAvatar();
+  //   }
+  // }, []);
   return (
     <div className="MainContent">
       <h1>dashboard</h1>

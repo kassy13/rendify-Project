@@ -28,8 +28,10 @@ const CreateEvent = ({ onClose }) => {
   const { setUser } = useAuth();
   const [createEvent, setcreateEvent] = useState({
     Category: "disabled",
-    startDate: null,
-    endDate: null,
+    // startDate: null,
+    // endDate: null,
+    startDate: "", // Initialize startDate with an empty string
+    endDate: "", // Initialize endDate with an empty string
     eventName: "",
     eventDescription: "",
     eventImage: null,
@@ -354,6 +356,9 @@ const CreateEvent = ({ onClose }) => {
                   <input
                     type="date"
                     required
+                    // Set min attribute to today's date
+                    min={new Date().toISOString().split("T")[0]}
+                    value={createEvent.startDate} // Bind value to createEvent.startDate
                     onChange={(e) => {
                       setcreateEvent({
                         ...createEvent,
@@ -369,6 +374,9 @@ const CreateEvent = ({ onClose }) => {
                   <input
                     type="date"
                     required
+                    // Set min attribute to today's date
+                    min={new Date().toISOString().split("T")[0]}
+                    value={createEvent.startDate} // Bind value to createEvent.startDate
                     onChange={(e) => {
                       setcreateEvent({
                         ...createEvent,

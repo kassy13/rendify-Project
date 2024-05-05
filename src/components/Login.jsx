@@ -14,36 +14,6 @@ const Login = () => {
     }
   }, [navigate, user]);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const email = loginForm.current.email.value;
-  //   const password = loginForm.current.password.value;
-
-  //   try {
-  //     const userInfo = { email, password };
-  //     await loginUser(userInfo);
-
-  //     // Check if the user is authenticated
-  //     if (userInfo) {
-  //       toast.success("Login successful");
-  //     } else {
-  //       // If user is not authenticated, show an error
-  //       toast.error("Invalid Email or Password");
-  //     }
-  //   } catch (error) {
-  //     console.error("Login error:", error);
-
-  //     // Handle specific error messages
-  //     if (error.message.includes("Invalid `password` param")) {
-  //       toast.error("Password must be at least 8 characters");
-  //     } else if (error.message.includes("Invalid credentials")) {
-  //       toast.error("Invalid Email or Password");
-  //     } else {
-  //       toast.error("An error occurred during login");
-  //     }
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = loginForm.current.email.value;
@@ -54,13 +24,19 @@ const Login = () => {
       const user = await loginUser(userInfo);
 
       // Check if the user is authenticated
-      if (user) {
+      // if (user) {
+      //   toast.success("Login successful");
+      //   navigate("/dashboard");
+      // }
+      // if (!user) {
+      //   toast.error("Invalid email or password");
+      // }
+      // Check if the user object exists
+      if (user && !user.error) {
         toast.success("Login successful");
         navigate("/dashboard");
       } else {
-        // If user is not authenticated, show an error
-        // toast.error("Invalid Email or Password");
-        console.log("Invalid Email or Password")
+        toast.error("Invalid email or password");
       }
     } catch (error) {
       console.error("Login error:", error);
@@ -70,9 +46,7 @@ const Login = () => {
         toast.error("Password must be at least 8 characters");
       } else if (error.message.includes("Invalid credentials")) {
         toast.error("Invalid Email or Password");
-      } 
-  
-      else {
+      } else {
         toast.error("An error occurred during login");
       }
     }
@@ -103,8 +77,8 @@ const Login = () => {
 
         <div className=" forg">
           <div className="remember">
-            <input type="checkbox" required />
-            <label> Remember me</label>
+            <input type="checkbox" id="checkme" required />
+            <label htmlFor="checkme"> Remember me</label>
           </div>
           <Link to={"/forgetpassword"}>Forgot password?</Link>
         </div>
