@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { clientContentful } from "../Contentful/client";
+import React, {useCallback, useEffect, useState} from "react";
+import {clientContentful} from "../Contentful/client";
 import "../sass/hero.scss";
 import heroimga from "../assets/Glass_Prism0094.png";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Loader from "../Loader/Loader";
 // import heroimga from "../assets/Clay_Purple0077.png";
 
@@ -12,12 +12,12 @@ const HeroSection = () => {
 
   const cleanupHeroDetails = useCallback((rawData) => {
     const cleanHeroDetails = rawData.map((detail) => {
-      const { sys, fields } = detail;
-      const { id } = sys;
+      const {sys, fields} = detail;
+      const {id} = sys;
       const heroTitle = fields.herosection;
       const heroPara = fields.heroPara;
       const heroimg = fields.heroimg.fields.file.url;
-      const updatedDetails = { id, heroTitle, heroPara, heroimg };
+      const updatedDetails = {id, heroTitle, heroPara, heroimg};
       return updatedDetails;
     });
     setHero(cleanHeroDetails);
@@ -53,13 +53,13 @@ const HeroSection = () => {
   ) : (
     <div>
       {hero.map((item) => {
-        const { id, heroTitle, heroPara, heroimg } = item;
+        const {id, heroTitle, heroPara, heroimg} = item;
         return (
           <div className="hero_section" key={id}>
             <div className="text_wrap">
               <h1 className="hero_title">{heroTitle}</h1>
               <p> {heroPara} </p>
-            
+
               <Link to={"/explore"} className="btn">
                 Get Started
               </Link>
