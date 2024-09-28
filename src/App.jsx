@@ -1,22 +1,21 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import "./custom css/Toastify-custom.css";
 import "./custom css/dash.css";
-import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 // import { AuthProvider } from "./utils/AuthContext";
 import PrivateRoutes from "./utils/PrivateRoute";
 import Dashboard from "./components/Dashboard/Dashboard";
-import { ToastContainer } from "react-toastify";
+import {ToastContainer} from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import ForgetPassword from "./components/ForgetPassword";
 import ResetPassword from "./components/ResetPassword";
 import NotFound from "./404/NotFound";
-import { Explore } from "./components/Events/Explore";
-import { EventContextProvider } from "./utils/EventContextProvider";
+import {Explore} from "./components/Events/Explore";
+import {EventContextProvider} from "./utils/EventContextProvider";
 import EventDetails from "./components/Events/EventDetails";
-import { AuthContexProvider } from "./utils/AuthContext";
+import {AuthContexProvider} from "./utils/AuthContext";
 import Verification from "./components/Verification";
 import Rsvp from "./components/Events/Rsvp";
 import AddedEvents from "./components/Events/AddedEvents";
@@ -29,6 +28,7 @@ import Profile from "./components/Profile";
 import Notification from "./components/Dashboard/Notification";
 import CreateEvent from "./components/Events/CreateEvent";
 import Admindash from "./components/Admin/Admindash";
+import Index from "./components/Index";
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
         <AuthContexProvider>
           <Routes>
             {/* Public Routes here */}
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Index />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgetpassword" element={<ForgetPassword />} />
