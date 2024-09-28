@@ -1,12 +1,12 @@
-import HeroSection from "./HeroSection";
-import Navbar from "./Navbar";
-import SectionOne from "./SectionOne";
+import HeroSection from "./components/HeroSection";
+import Navbar from "./components/Navbar";
+import SectionOne from "./components/SectionOne";
 import "../sass/hero.scss";
 import {useState} from "react";
 
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 
-import Loader3 from "../Loader/Loader3";
+import Loader3 from "./Loader/Loader3";
 // import Loader from "../Loader/Loader";
 
 const Index = () => {

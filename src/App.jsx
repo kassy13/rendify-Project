@@ -28,7 +28,7 @@ import Profile from "./components/Profile";
 import Notification from "./components/Dashboard/Notification";
 import CreateEvent from "./components/Events/CreateEvent";
 import Admindash from "./components/Admin/Admindash";
-import Index from "./components/Index";
+import Index from "./Index";
 
 function App() {
   return (
